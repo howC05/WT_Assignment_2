@@ -1,0 +1,104 @@
+{
+  "users": [
+    {
+      "id": "2",
+      "name": "Seman Rihan",
+      "email": "semrihan@utm.my",
+      "password": "user",
+      "role": "sales"
+    },
+    {
+      "id": "73f2",
+      "email": "hochun@graduate.utm.my",
+      "password": "123",
+      "role": "user",
+      "name": "Ho Wei Chun"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Laptop",
+      "price": 2999.99
+    },
+    {
+      "id": "3",
+      "name": "Phone",
+      "price": 1999.5
+    },
+    {
+      "id": "5",
+      "name": "Desk",
+      "price": 500
+    },
+    {
+      "id": "9",
+      "name": "Book",
+      "price": 45.5
+    }
+  ],
+  "courseMaterials": [
+    {
+      "id": "1",
+      "title": "Introduction",
+      "description": "This material covers the basics of web technology including HTML, CSS, and JavaScript.",
+      "link": "https://example.com/intro-web-tech"
+    },
+    {
+      "id": "2",
+      "title": "JavaScript",
+      "description": "Deep dive into advanced JavaScript topics including closures, async/await, and ES6 features.",
+      "link": "https://example.com/advanced-js"
+    },
+    {
+      "id": "3",
+      "title": "Vue.js Fundamentals",
+      "description": "Learn the fundamentals of Vue.js, a progressive JavaScript framework for building user interfaces.",
+      "link": "https://example.com/vuejs-fundamentals"
+    },
+    {
+      "id": "4",
+      "title": "Web Design",
+      "description": "A comprehensive guide to designing and developing responsive websites.",
+      "link": "https://example.com/responsive-web-design"
+    },
+    {
+      "id": "eaf3",
+      "title": "EXCEL REPORT",
+      "description": "Testing",
+      "link": "https://youtube.com"
+    }
+  ],
+  "assessments": [
+    {
+      "id": "1",
+      "title": "Quiz 1: HTML Basics",
+      "description": "A quiz covering the basic concepts of HTML.",
+      "dueDate": "2024-07-01"
+    },
+    {
+      "id": "2",
+      "title": "Assignment 1: Build a Person",
+      "description": "Create a personal website using HTML, CSS, and JavaScript.",
+      "dueDate": "2024-07-21"
+    },
+    {
+      "id": "3",
+      "title": "Midterm Exam: JavaScript Essentials",
+      "description": "An exam covering essential JavaScript concepts and programming techniques.",
+      "dueDate": "2024-08-01"
+    },
+    {
+      "id": "4",
+      "title": "Final Project: Develop a Web Application",
+      "description": "Develop a fully functional web application using Vue.js and other web technologies learned in the course.",
+      "dueDate": "2024-12-01"
+    },
+    {
+      "id": "448c",
+      "title": "Assignment 3: PHP Slim",
+      "description": "PHP assignment",
+      "dueDate": "2024-07-20"
+    }
+  ]
+}
