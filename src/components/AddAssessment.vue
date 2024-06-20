@@ -34,13 +34,24 @@ export default {
     methods: {
         async addAssessment() {
             try {
-                const response = await fetch('http://localhost:3000/assessments', {
+                // Task 2 json-server
+                // const response = await fetch('http://localhost:3000/assessments', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(this.assessment)
+                // });
+
+                // Task 3 php(non-RESTful)
+                const response = await fetch('http://localhost/php-backend/index.php?action=createAssessment&type=assessment', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(this.assessment)
                 });
+
                 if (response.ok) {
                     this.$emit('add-success');
                     this.assessment = { title: '', description: '', dueDate: '' };

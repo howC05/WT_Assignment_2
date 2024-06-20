@@ -31,27 +31,56 @@ export default {
     methods: {
         async login() {
             try {
-                const response = await fetch(`http://localhost:3000/users?email=${this.email}&password=${this.password}`);
-                const users = await response.json();
+                // Task 2 json-server
+                // const response = await fetch(`http://localhost:3000/users?email=${this.email}&password=${this.password}`);
+                // const users = await response.json();
 
-                if (users.length > 0) {
-                    const user = users[0];
-                    if (user.password === this.password) {
-                        // Login successful
-                        console.log('Login Successful!');
-                        this.message = 'Login Successful!';
-                        // Optionally, you can redirect the user to another page
-                        setTimeout(() => {
-                            this.$emit('login-success', user.email);
-                            this.$router.push('/');
-                        }, 3000);
-                    } else {
-                        // Password does not match
-                        this.message = 'Invalid email or password. Please try again.';
-                    }
+                // if (users.length > 0) {
+                //     const user = users[0];
+                //     if (user.password === this.password) {
+                //         // Login successful
+                //         console.log('Login Successful!');
+                //         this.message = 'Login Successful!';
+                //         // Optionally, you can redirect the user to another page
+                //         setTimeout(() => {
+                //             this.$emit('login-success', user.email);
+                //             this.$router.push('/');
+                //         }, 3000);
+                //     } else {
+                //         // Password does not match
+                //         this.message = 'Invalid email or password. Please try again.';
+                //     }
+                // } else {
+                //     // Email does not exist
+                //     this.message = 'Invalid email or password. Please try again.';
+                // }
+
+                // Task 3 php(non-RESTful)
+                const response = await fetch('http://localhost/php-backend/index.php?action=loginUser&type=user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: this.email,
+                        password: this.password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Login successful
+                    console.log('Login Successful!');
+                    this.message = 'Login Successful!';
+                    // Optionally, you can redirect the user to another page
+                    setTimeout(() => {
+                        this.$emit('login-success', data.email);
+                        this.$router.push('/');
+                    }, 3000);
                 } else {
-                    // Email does not exist
-                    this.message = 'Invalid email or password. Please try again.';
+                    // Invalid email or password
+                    this.message = data.error || 'Invalid email or password. Please try again.';
                 }
             } catch (error) {
                 console.error('Error:', error);

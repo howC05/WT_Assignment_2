@@ -35,7 +35,18 @@ export default {
     methods: {
         async addCourseMaterial() {
             try {
-                const response = await fetch('http://localhost:3000/courseMaterials', {
+                // Task 2 json server
+                // const response = await fetch('http://localhost:3000/courseMaterials', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(this.courseMaterial)
+                // });
+
+                // Task 3
+                // php(non-RESTful)
+                const response = await fetch('http://localhost/php-backend/index.php?action=createCourseMaterial&type=courseMaterial', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

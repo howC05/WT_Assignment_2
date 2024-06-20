@@ -50,7 +50,7 @@ export default {
     methods: {
         async fetchCourseMaterials() {
             try {
-                const response = await fetch('http://localhost:3000/courseMaterials');
+                const response = await fetch('http://localhost/php-backend/index.php?action=getCourseMaterials&type=courseMaterial');
                 const data = await response.json();
                 this.courseMaterials = data;
             } catch (error) {
@@ -63,8 +63,15 @@ export default {
         },
         async deleteMaterial(id) {
             try {
-                const response = await fetch(`http://localhost:3000/courseMaterials/${id}`, {
-                    method: 'DELETE',
+                // Task 2 json server
+
+                // const response = await fetch(`http://localhost:3000/courseMaterials/${id}`, {
+                //     method: 'DELETE',
+                // });
+
+                // Task 3 php(non-RESTful)
+                const response = await fetch(`http://localhost/php-backend/index.php?action=deleteCourseMaterial&type=courseMaterial&id=${id}`, {
+                    method: 'DELETE'
                 });
                 if (response.ok) {
                     this.fetchCourseMaterials();
@@ -93,6 +100,4 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Add any additional styling here if needed */
-</style>
+<style scoped></style>

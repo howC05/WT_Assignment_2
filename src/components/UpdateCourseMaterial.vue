@@ -34,8 +34,19 @@ export default {
     methods: {
         async updateCourseMaterial() {
             try {
-                const response = await fetch(`http://localhost:3000/courseMaterials/${this.courseMaterial.id}`, {
-                    method: 'PUT',
+                // Task 2 json-server
+                // const response = await fetch(`http://localhost:3000/courseMaterials/${this.courseMaterial.id}`, {
+                //     method: 'PUT',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(this.courseMaterial)
+                // });
+
+                // Task 3
+                // php(non-RESTful)
+                const response = await fetch('http://localhost/php-backend/index.php?action=updateCourseMaterial&type=courseMaterial', {
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },

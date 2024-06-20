@@ -13,6 +13,12 @@
       "password": "123",
       "role": "user",
       "name": "Ho Wei Chun"
+    },
+    {
+      "id": "ebcf",
+      "email": "abc@gmail.con",
+      "password": "123",
+      "role": "user"
     }
   ],
   "products": [
@@ -38,12 +44,6 @@
     }
   ],
   "courseMaterials": [
-    {
-      "id": "1",
-      "title": "Introduction",
-      "description": "This material covers the basics of web technology including HTML, CSS, and JavaScript.",
-      "link": "https://example.com/intro-web-tech"
-    },
     {
       "id": "2",
       "title": "JavaScript",

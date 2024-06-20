@@ -3,6 +3,10 @@
         <h2>Register</h2>
         <form @submit.prevent="register">
             <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" v-model="name" required>
+            </div>
+            <div>
                 <label for="email">Email:</label>
                 <input type="email" id="email" v-model="email" required>
             </div>
@@ -23,6 +27,7 @@ export default {
     name: "Register",
     data() {
         return {
+            name: '',
             email: '',
             password: '',
             message: '',
@@ -31,11 +36,22 @@ export default {
     methods: {
         async register() {
             try {
-                // Check if the email already exists
-                const emailCheckResponse = await fetch(`http://localhost:3000/users?email=${this.email}`);
-                const users = await emailCheckResponse.json();
+                // Task 2 json-server
+                // const emailCheckResponse = await fetch(`http://localhost:3000/users?email=${this.email}`);
+                // const users = await emailCheckResponse.json();
 
-                if (users.length > 0) {
+                // if (users.length > 0) {
+                //     // Email already exists, prompt user to log in
+                //     this.message = 'Email already exists. Please log in.';
+                //     console.log('Email already exists');
+                //     return;
+                // }
+
+                // Task 3 php(non-RESTful)
+                // Check if the email already exists
+                const emailCheckResponse = await fetch(`http://localhost/php-backend/index.php?action=getUserByEmail&type=user&email=${this.email}`);
+                const user = await emailCheckResponse.json();
+                if (user && user.email) {
                     // Email already exists, prompt user to log in
                     this.message = 'Email already exists. Please log in.';
                     console.log('Email already exists');
@@ -44,12 +60,12 @@ export default {
 
                 // Email does not exist, proceed with registration
                 const newUser = {
+                    name: this.name,
                     email: this.email,
                     password: this.password, // You might want to hash the password before sending
-                    role: 'user',
                 };
 
-                const registerResponse = await fetch('http://localhost:3000/users', {
+                const registerResponse = await fetch('http://localhost/php-backend/index.php?action=createUser&type=user', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -57,15 +73,22 @@ export default {
                     body: JSON.stringify(newUser),
                 });
 
+                const data = await registerResponse.json();
+
+                if (registerResponse.status === 409) {
+                    this.message = data.error || 'Email already exists. Please log in.';
+                    return;
+                }
 
                 if (!registerResponse.ok) {
-                    throw new Error('Failed to register user');
+                    throw new Error(data.error || 'Failed to register user');
                 }
+
                 this.message = 'User registered successfully!';
-                const data = await registerResponse.json();
                 console.log('User registered:', data);
 
                 // Optionally, reset form fields or redirect user
+                this.name = '';
                 this.email = '';
                 this.password = '';
                 setTimeout(() => {
@@ -73,7 +96,7 @@ export default {
                 }, 3000);
             } catch (error) {
                 console.error('Error:', error);
-                this.message = 'An error occurred. Please try again.';
+                this.message = error.message || 'An error occurred. Please try again.';
             }
         },
     },
@@ -98,5 +121,10 @@ input {
 
 button {
     padding: 0.5rem 1rem;
+}
+
+.message {
+    color: rgb(0, 0, 0);
+    margin-top: 1rem;
 }
 </style>

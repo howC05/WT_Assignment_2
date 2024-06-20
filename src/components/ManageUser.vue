@@ -5,8 +5,9 @@
             <div class="col-md-6 mb-4" v-for="user in users" :key="user.id">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ user.name }}</h5>
-                        <p class="card-text">{{ user.email }}</p>
+                        <h5 class="card-title">Name: {{ user.name }}</h5>
+                        <p class="card-text">ID: {{ user.id }}</p>
+                        <p class="card-text">Email: {{ user.email }}</p>
                         <button class="btn btn-secondary mt-2" @click="selectUser(user)">Update Name</button><br>
                         <button class="btn btn-danger mt-2" @click="deleteUser(user.id)">Delete</button>
                     </div>
@@ -24,7 +25,7 @@ import UpdateUserName from './UpdateUserName.vue';
 import Modal from './Modal.vue';
 
 export default {
-    name: 'UserManagement',
+    name: 'ManageUser',
     components: {
         UpdateUserName,
         Modal
@@ -42,7 +43,7 @@ export default {
     methods: {
         async fetchUsers() {
             try {
-                const response = await fetch('http://localhost:3000/users');
+                const response = await fetch('http://localhost/php-backend/index.php?action=getUsers&type=user');
                 const data = await response.json();
                 this.users = data;
             } catch (error) {
@@ -58,13 +59,14 @@ export default {
         },
         async deleteUser(id) {
             try {
-                const response = await fetch(`http://localhost:3000/users/${id}`, {
+                const response = await fetch(`http://localhost/php-backend/index.php?action=deleteUser&type=user&id=${id}`, {
                     method: 'DELETE'
                 });
                 if (response.ok) {
                     this.fetchUsers();
                 } else {
-                    console.error('Failed to delete user');
+                    const data = await response.json();
+                    console.error('Failed to delete user:', data.error);
                 }
             } catch (error) {
                 console.error('Error deleting user:', error);

@@ -15,3 +15,4 @@ class db
         return $dbConnection;
     }
 }
+?>

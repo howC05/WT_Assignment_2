@@ -53,7 +53,13 @@ export default {
     methods: {
         async fetchAssessments() {
             try {
-                const response = await fetch('http://localhost:3000/assessments');
+                // Task 2 json-server
+                // const response = await fetch('http://localhost:3000/assessments');
+                // const data = await response.json();
+                // this.assessments = data;
+
+                // Task 3 php(non-restful)
+                const response = await fetch('http://localhost/php-backend/index.php?action=getAssessments&type=assessment');
                 const data = await response.json();
                 this.assessments = data;
             } catch (error) {
@@ -66,7 +72,13 @@ export default {
         },
         async deleteAssessment(id) {
             try {
-                const response = await fetch(`http://localhost:3000/assessment/${id}`, {
+                // Task 2 json-server
+                // const response = await fetch(`http://localhost:3000/assessment/${id}`, {
+                //     method: 'DELETE',
+                // });
+
+                // Task 3 php(non-RESTful)
+                const response = await fetch(`http://localhost/php-backend/index.php?action=deleteAssessment&type=assessment&id=${id}`, {
                     method: 'DELETE',
                 });
                 if (response.ok) {

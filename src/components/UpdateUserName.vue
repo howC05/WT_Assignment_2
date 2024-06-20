@@ -25,7 +25,11 @@ export default {
     methods: {
         async updateUserName() {
             try {
-                const response = await fetch(`http://localhost:3000/users/${this.userData.id}`, {
+                // Task 2 json-server
+                // const response = await fetch(`http://localhost:3000/users/${this.userData.id}`
+
+                // Task 3 php(non-RESTful)
+                const response = await fetch(`http://localhost/php-backend/index.php?action=updateUser&type=user`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -35,6 +39,7 @@ export default {
                 if (response.ok) {
                     this.$emit('update-success');
                 } else {
+                    const data = await response.json();
                     console.error('Failed to update user name');
                 }
             } catch (error) {
