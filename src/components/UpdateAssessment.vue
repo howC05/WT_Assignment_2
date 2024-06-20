@@ -44,8 +44,11 @@ export default {
                 // });
 
                 // Task 3 php(non-RESTful)
-                const response = await fetch('http://localhost/php-backend/index.php?action=updateAssessment&type=assessment', {
-                    method: 'POST',
+                // const response = await fetch('http://localhost/php-backend/index.php?action=updateAssessment&type=assessment', {
+
+                // Task 4 php (RESTful)
+                const response = await fetch(`http://localhost/php-RESTful/api/assessments/${this.assessmentData.id}`, {
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },

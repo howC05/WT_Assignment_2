@@ -59,7 +59,10 @@ export default {
                 // this.assessments = data;
 
                 // Task 3 php(non-restful)
-                const response = await fetch('http://localhost/php-backend/index.php?action=getAssessments&type=assessment');
+                // const response = await fetch('http://localhost/php-backend/index.php?action=getAssessments&type=assessment');
+
+                // Task 4 php(RESTful)
+                const response = await fetch('http://localhost/php-RESTful/api/assessments');
                 const data = await response.json();
                 this.assessments = data;
             } catch (error) {
@@ -78,7 +81,10 @@ export default {
                 // });
 
                 // Task 3 php(non-RESTful)
-                const response = await fetch(`http://localhost/php-backend/index.php?action=deleteAssessment&type=assessment&id=${id}`, {
+                // const response = await fetch(`http://localhost/php-backend/index.php?action=deleteAssessment&type=assessment&id=${id}`, {
+
+                // Task 4 php(RESTful)
+                const response = await fetch(`http://localhost/php-RESTful/api/assessments/${id}`, {
                     method: 'DELETE',
                 });
                 if (response.ok) {

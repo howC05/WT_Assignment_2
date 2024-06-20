@@ -50,7 +50,11 @@ export default {
     methods: {
         async fetchCourseMaterials() {
             try {
-                const response = await fetch('http://localhost/php-backend/index.php?action=getCourseMaterials&type=courseMaterial');
+                // Task 3 php(non-RESTful)
+                // const response = await fetch('http://localhost/php-backend/index.php?action=getCourseMaterials&type=courseMaterial');
+
+                // Task 4 php (RESTful)
+                const response = await fetch('http://localhost/php-RESTful/api/course-materials');
                 const data = await response.json();
                 this.courseMaterials = data;
             } catch (error) {
@@ -70,7 +74,10 @@ export default {
                 // });
 
                 // Task 3 php(non-RESTful)
-                const response = await fetch(`http://localhost/php-backend/index.php?action=deleteCourseMaterial&type=courseMaterial&id=${id}`, {
+                // const response = await fetch(`http://localhost/php-backend/index.php?action=deleteCourseMaterial&type=courseMaterial&id=${id}`, {
+
+                // Task 4 php (RESTful)
+                const response = await fetch(`http://localhost/php-RESTful/api/course-materials/${id}`, {
                     method: 'DELETE'
                 });
                 if (response.ok) {

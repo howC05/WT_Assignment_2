@@ -46,7 +46,10 @@ export default {
 
                 // Task 3
                 // php(non-RESTful)
-                const response = await fetch('http://localhost/php-backend/index.php?action=createCourseMaterial&type=courseMaterial', {
+                // const response = await fetch('http://localhost/php-backend/index.php?action=createCourseMaterial&type=courseMaterial', {
+
+                // Task 4 php (RESTful)
+                const response = await fetch('http://localhost/php-RESTful/api/course-materials', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

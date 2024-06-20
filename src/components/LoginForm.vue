@@ -56,7 +56,10 @@ export default {
                 // }
 
                 // Task 3 php(non-RESTful)
-                const response = await fetch('http://localhost/php-backend/index.php?action=loginUser&type=user', {
+                // const response = await fetch('http://localhost/php-backend/index.php?action=loginUser&type=user', {
+
+                // Task 4 php(RESTful)
+                const response = await fetch('http://localhost/php-RESTful/api/loginUser', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

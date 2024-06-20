@@ -29,7 +29,10 @@ export default {
                 // const response = await fetch(`http://localhost:3000/users/${this.userData.id}`
 
                 // Task 3 php(non-RESTful)
-                const response = await fetch(`http://localhost/php-backend/index.php?action=updateUser&type=user`, {
+                // const response = await fetch(`http://localhost/php-backend/index.php?action=updateUser&type=user`, {
+
+                // Task 4 python(RESTful)
+                const response = await fetch(`http://localhost/php-RESTful/api/users/${this.userData.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

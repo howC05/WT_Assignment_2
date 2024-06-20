@@ -43,6 +43,10 @@ export default {
     methods: {
         async fetchUsers() {
             try {
+                // Task 2 json-server
+                // const response = await fetch('http://localhost/3000/users');
+
+                // Task 3 php(non-RESTful)
                 const response = await fetch('http://localhost/php-backend/index.php?action=getUsers&type=user');
                 const data = await response.json();
                 this.users = data;

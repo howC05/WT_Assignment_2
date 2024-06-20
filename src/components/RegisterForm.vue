@@ -49,7 +49,10 @@ export default {
 
                 // Task 3 php(non-RESTful)
                 // Check if the email already exists
-                const emailCheckResponse = await fetch(`http://localhost/php-backend/index.php?action=getUserByEmail&type=user&email=${this.email}`);
+                // const emailCheckResponse = await fetch(`http://localhost/php-backend/index.php?action=getUserByEmail&type=user&email=${this.email}`);
+
+                // Task 4 php(RESTful)
+                const emailCheckResponse = await fetch(`http://localhost/php-RESTful/api/users?email=${this.email}`);
                 const user = await emailCheckResponse.json();
                 if (user && user.email) {
                     // Email already exists, prompt user to log in
@@ -64,8 +67,12 @@ export default {
                     email: this.email,
                     password: this.password, // You might want to hash the password before sending
                 };
+                // Task 3 php(non-RESTful)
+                // const registerResponse = await fetch('http://localhost/php-backend/index.php?action=createUser&type=user', {
 
-                const registerResponse = await fetch('http://localhost/php-backend/index.php?action=createUser&type=user', {
+                // Task 4 php(RESTful)
+
+                const registerResponse = await fetch('http://localhost/php-RESTful/api/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
